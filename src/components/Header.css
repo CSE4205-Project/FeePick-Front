@@ -1,0 +1,47 @@
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.home, .home:hover, .home:visited {
+    text-decoration: none;
+    background-color : #F9FAFD;
+    font-size: 40px;
+    font-family: 'yg-jalnan';
+    display : flex;
+    color : #1D24CA;
+    padding-left : 20px;
+}
+
+.topMenu {
+    height : 40px;
+    background-color : #E3E4FF;
+}
+
+nav {
+    width : 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+.topMenu ul li {
+    list-style: none;
+    line-height: 40px;
+    float: left;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.topMenu ul li a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    display: block;
+    color : gray;
+}
+
+.topMenu ul li a:hover {
+    color : #1D24CA;
+}

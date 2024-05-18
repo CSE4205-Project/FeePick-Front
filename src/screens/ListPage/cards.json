@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Card 1",
+        "company": "Company A",
+        "benefits": ["Benefit 1", "Benefit 2"],
+        "hashtags": ["Tag1", "Tag2"],
+        "image": "card1.jpg"
+    },
+    {
+        "name": "Card 2",
+        "company": "Company B",
+        "benefits": ["Benefit 3", "Benefit 4"],
+        "hashtags": ["Tag2", "Tag3"],
+        "image": "card2.jpg"
+    },
+    {
+        "name": "Card 3",
+        "company": "Company C",
+        "benefits": ["Benefit 5", "Benefit 6"],
+        "hashtags": ["Tag3", "Tag4"],
+        "image": "card3.jpg"
+    },
+    {
+        "name": "Card 4",
+        "company": "Company D",
+        "benefits": ["Benefit 7", "Benefit 8"],
+        "hashtags": ["Tag4", "Tag5"],
+        "image": "card4.jpg"
+    }
+]

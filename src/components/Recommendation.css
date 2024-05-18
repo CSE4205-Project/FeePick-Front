@@ -1,0 +1,184 @@
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GongGothicMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TTTtangsbudaejjigaeB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/TTTtangsbudaejjigaeB.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SEBANG_Gothic_Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SEBANG_Gothic_Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'twaysky';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twaysky.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'KOFIHDrLEEJWTTF-B';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/KOFIHDrLEEJWTTF-B.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NEXEN_TIRE_Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/NEXEN_TIRE_Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+.whole-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+}
+
+.left, .right {
+    flex: 1;
+    margin-top: 170px;
+}
+
+.left {
+    padding-left: 240px;
+}
+
+.right {
+    padding-right: 240px;
+}
+
+.middle {
+    flex: 9;
+}
+
+.recommended {
+    position: absolute;
+    display: flex;
+    height: 350px;
+    width: 700px;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #F0F3FF;
+    transition: height 0.3s ease;
+}
+
+.card {
+    padding: 20px;
+    flex: 1;
+    max-width: 50%;
+}
+
+.features {
+    flex: 1;
+    max-width: 50%;
+}
+
+.card img {
+    height: 300px;
+    width: auto;
+}
+
+h2 {
+    font-family: 'GongGothicMedium';
+    padding-top: 15px;
+    padding-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.h2-num {
+    color: #1D24CA;
+}
+
+.h2-title {
+    color:gray;
+    margin-left: 10px;
+}
+
+p {
+    color: gray;
+    font-size: 30px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.more-info, .redirection {
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 15px;
+    background-color: white;
+    color: #1D24CA;
+    font-weight: 600;
+    height: 30px;
+    margin-right: 20px;
+    padding-left: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.more-info:hover, .redirection:hover {
+    background-color: #1D24CA;
+    color: white;
+}
+
+.more-info {
+    width: 120px;
+}
+
+.redirection {
+    width: 130px;
+}
+
+.more-info-icon {
+    font-size : 18px;
+    margin-top: -1px;
+    margin-left: 4px;
+}
+
+.redirection-icon {
+    font-size: 16px;
+    margin-top: -2px;
+    margin-left: 5px;
+}
+
+.go {
+    margin-top: -2px;
+    margin-left: 8px;
+}
+
+.arrow {
+    color: gray;
+    border: none;
+    background-color: #F9FAFD;
+    font-size: 40px;
+}
+
+.arrow:hover {
+    color: #1D24CA;
+}

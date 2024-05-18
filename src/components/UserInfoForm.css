@@ -1,0 +1,103 @@
+form {
+    align-self: center;
+}
+
+input {
+    background-color: #E3E4FF;
+    appearance: none;
+    width: 200px;
+    height: 30px;
+    border-radius: 2rem;
+    border:none;
+    padding: 1rem 1rem .5rem;
+    margin: 10px 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+select {
+    background-color: #E3E4FF;
+    appearance: none;
+    width: 230px;
+    height: 55px;
+    border-radius: 2rem;
+    border:none;
+    padding: 1rem;
+    margin: 10px 30px;
+    cursor: pointer;
+    color: gray;
+    font-size: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input::placeholder {
+    color: gray;
+    font-size: 20px;
+}
+
+.container {
+    margin: 30px 100px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 2rem 1.5rem;
+    background-color: #F9FAFD;
+}
+
+.userInfo {
+    flex : 6;
+    border-left: 1px solid #E3E4FF;
+}
+
+.comments {
+    flex : 4;
+}
+
+h2 {
+    width: 100%;
+    max-width: 25ch;
+}
+
+h3 {
+    padding-left: 40px;
+}
+
+p {
+    margin-top: 1rem;
+    font-size: 1rem;
+    max-width: 24ch;
+}
+
+.minus, .plus {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: none;
+}
+
+.minus:hover, .plus:hover {
+    background-color: gray;
+    color: white;
+}
+
+.plus {
+    margin: 30px;
+}
+
+.submit {
+    margin: 30px;
+    width: 65px;
+    height: 30px;
+    border: none;
+    outline: none;
+    background: #1D24CA;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 40px;
+    text-align: center;
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
