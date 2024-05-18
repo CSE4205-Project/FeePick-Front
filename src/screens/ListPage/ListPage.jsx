@@ -1,28 +1,53 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header';
 import CheckBox from '../../components/CheckBox';
 import './ListPage.css';
+import cardsData from './cards.json';
 
 function ListPage() {
-  const [government, setGovernment] = useState(true);
-  const [localGovernment, setLocalGovernment] = useState(true);
-  const [cardCompany, setCardCompany] = useState(true);
-  const [otherCategory, setOtherCategory] = useState(true);
-  const [specifiedAmount, setSpecifiedAmount] = useState(true);
-  const [discount, setDiscount] = useState(true);
-  const [refund, setRefund] = useState(true);
+  const [cards, setCards] = useState([]);
+  const [visibleCards, setVisibleCards] = useState(3); // 초기에 보여지는 카드 수
+  const [filters, setFilters] = useState({
+    government: true,
+    localGovernment: true,
+    cardCompany: true,
+    otherCategory: true,
+    specifiedAmount: true,
+    discount: true,
+    refund: true
+  });
 
-  const checkedItems = [];
-  if (government) checkedItems.push("정부");
-  if (localGovernment) checkedItems.push("지자체");
-  if (cardCompany) checkedItems.push("카드사");
-  if (otherCategory) checkedItems.push("기타");
-  if (specifiedAmount) checkedItems.push("지정금액");
-  if (discount) checkedItems.push("할인");
-  if (refund) checkedItems.push("환급");
+  // Load cards data on component mount
+  useEffect(() => {
+    setCards(cardsData);
+  }, []);
+
+  const handleFilterChange = (filterKey) => {
+    setFilters({
+      ...filters,
+      [filterKey]: !filters[filterKey]
+    });
+  };
+
+  const filteredCards = cards.filter((card) => {
+    // Assuming the filter keys match the keys in the card data
+    return (
+      (filters.government) ||
+      (filters.localGovernment) ||
+      (filters.cardCompany) ||
+      (filters.otherCategory) ||
+      (filters.specifiedAmount) ||
+      (filters.discount) ||
+      (filters.refund)
+    );
+  });
+
+  const handleLoadMore = () => {
+    setVisibleCards(prevVisibleCards => prevVisibleCards + 3); // 한 번에 3개씩 추가
+  };
 
   return (
-    <div>
+    <div className="listing-page">
       <Header />
       <div className="checkbox-container">
         <div className="left">
@@ -31,21 +56,38 @@ function ListPage() {
         </div>
         <div className="right">
           <div className="line">
-            <CheckBox label="정부" isChecked={government} onChange={() => setGovernment(!government)} />
-            <CheckBox label="지자체" isChecked={localGovernment} onChange={() => setLocalGovernment(!localGovernment)} />
-            <CheckBox label="카드사" isChecked={cardCompany} onChange={() => setCardCompany(!cardCompany)} />
-            <CheckBox label="기타" isChecked={otherCategory} onChange={() => setOtherCategory(!otherCategory)} />
+            <CheckBox label="정부" isChecked={filters.government} onChange={() => handleFilterChange('government')} />
+            <CheckBox label="지자체" isChecked={filters.localGovernment} onChange={() => handleFilterChange('localGovernment')} />
+            <CheckBox label="카드사" isChecked={filters.cardCompany} onChange={() => handleFilterChange('cardCompany')} />
+            <CheckBox label="기타" isChecked={filters.otherCategory} onChange={() => handleFilterChange('otherCategory')} />
           </div>
           <div className="line">
-            <CheckBox label="지정금액" isChecked={specifiedAmount} onChange={() => setSpecifiedAmount(!specifiedAmount)} />
-            <CheckBox label="할인" isChecked={discount} onChange={() => setDiscount(!discount)} />
-            <CheckBox label="환급" isChecked={refund} onChange={() => setRefund(!refund)} />
+            <CheckBox label="지정금액" isChecked={filters.specifiedAmount} onChange={() => handleFilterChange('specifiedAmount')} />
+            <CheckBox label="할인" isChecked={filters.discount} onChange={() => handleFilterChange('discount')} />
+            <CheckBox label="환급" isChecked={filters.refund} onChange={() => handleFilterChange('refund')} />
           </div>
         </div>
       </div>
-      <div>
-
+      <div className="list">
+        <div className="overlap-group">
+          {filteredCards.slice(0, visibleCards).map((card) => (
+            <div key={card.name} className="rectangle">
+              <img src={card.image} alt={card.name} />
+              <div className="card-info">
+                <div className="card-company"><div className="frame"><div className="text-wrapper-2">{card.company}</div></div></div>
+                <div className="text-wrapper">{card.name}</div>
+                <div className="features">{card.benefits.join(' | ')}</div>
+                <div className="hashtags"><div className="text-wrapper-3">#{card.hashtags.join(' #')}</div></div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
+      {visibleCards < filteredCards.length && (
+        <div className="load-more" onClick={handleLoadMore}>
+          Load More
+        </div>
+      )}
     </div>
   );
 }
