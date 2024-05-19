@@ -53,24 +53,24 @@
     margin-top: 50px;
 }
 
-.left, .right {
+.whole-container .left, .whole-container .right {
     flex: 1;
     margin-top: 170px;
 }
 
-.left {
+.whole-container .left {
     padding-left: 240px;
 }
 
-.right {
+.whole-container .right {
     padding-right: 240px;
 }
 
-.middle {
+.whole-container .middle {
     flex: 9;
 }
 
-.recommended {
+.whole-container .recommended {
     position: absolute;
     display: flex;
     height: 350px;
@@ -84,51 +84,51 @@
     transition: height 0.3s ease;
 }
 
-.card {
+.whole-container .card {
     padding: 20px;
     flex: 1;
     max-width: 50%;
 }
 
-.features {
+.whole-container .features {
     flex: 1;
     max-width: 50%;
 }
 
-.card img {
+.whole-container .card img {
     height: 300px;
     width: auto;
 }
 
-h2 {
+.whole-container h2 {
     font-family: 'GongGothicMedium';
     padding-top: 15px;
     padding-bottom: 10px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
 }
 
-.h2-num {
+.whole-container .h2-num {
     color: #1D24CA;
 }
 
-.h2-title {
+.whole-container .h2-title {
     color:gray;
     margin-left: 10px;
 }
 
-p {
+.whole-container p {
     color: gray;
     font-size: 30px;
     margin-bottom: 25px;
     position: relative;
 }
 
-.buttons {
+.whole-container .buttons {
     display: flex;
     flex-direction: row;
 }
 
-.more-info, .redirection {
+.whole-container .more-info, .whole-container .redirection {
     display: flex;
     align-items: center;
     border: none;
@@ -142,43 +142,43 @@ p {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.more-info:hover, .redirection:hover {
+.whole-container .more-info:hover, .whole-container .redirection:hover {
     background-color: #1D24CA;
     color: white;
 }
 
-.more-info {
+.whole-container .more-info {
     width: 120px;
 }
 
-.redirection {
+.whole-container .redirection {
     width: 130px;
 }
 
-.more-info-icon {
+.whole-container .more-info-icon {
     font-size : 18px;
     margin-top: -1px;
     margin-left: 4px;
 }
 
-.redirection-icon {
+.whole-container .redirection-icon {
     font-size: 16px;
     margin-top: -2px;
     margin-left: 5px;
 }
 
-.go {
+.whole-container .go {
     margin-top: -2px;
     margin-left: 8px;
 }
 
-.arrow {
+.whole-container .arrow {
     color: gray;
     border: none;
     background-color: #F9FAFD;
     font-size: 40px;
 }
 
-.arrow:hover {
+.whole-container .arrow:hover {
     color: #1D24CA;
 }
