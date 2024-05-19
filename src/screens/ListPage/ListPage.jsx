@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
 import CheckBox from '../../components/CheckBox';
 import './ListPage.css';
 import cardsData from './cards.json';
 
 function ListPage() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [cards, setCards] = useState([]);
   const [visibleCards, setVisibleCards] = useState(3); // 초기에 보여지는 카드 수
   const [filters, setFilters] = useState({
@@ -20,7 +20,7 @@ function ListPage() {
   });
 
   const [clickCounts, setClickCounts] = useState({});
-  
+
   useEffect(() => {
     setCards(cardsData);
   }, []);
@@ -53,7 +53,7 @@ function ListPage() {
       ...prevClickCounts,
       [card.name]: (prevClickCounts[card.name] || 0) + 1
     }));
-    history.push(`/detailPage?name=${card.name}&company=${card.company}`);
+    navigate(`/detailPage?name=${card.name}&company=${card.company}`);
   };
 
   return (
