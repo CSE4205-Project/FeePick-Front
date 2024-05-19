@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Header from '../../components/Header';
 import CheckBox from '../../components/CheckBox';
 import './ListPage.css';
 import cardsData from './cards.json';
 
 function ListPage() {
+  const history = useHistory();
   const [cards, setCards] = useState([]);
   const [visibleCards, setVisibleCards] = useState(3); // 초기에 보여지는 카드 수
   const [filters, setFilters] = useState({
@@ -17,7 +19,8 @@ function ListPage() {
     refund: true
   });
 
-  // Load cards data on component mount
+  const [clickCounts, setClickCounts] = useState({});
+  
   useEffect(() => {
     setCards(cardsData);
   }, []);
@@ -30,7 +33,6 @@ function ListPage() {
   };
 
   const filteredCards = cards.filter((card) => {
-    // Assuming the filter keys match the keys in the card data
     return (
       (filters.government) ||
       (filters.localGovernment) ||
@@ -44,6 +46,14 @@ function ListPage() {
 
   const handleLoadMore = () => {
     setVisibleCards(prevVisibleCards => prevVisibleCards + 3); // 한 번에 3개씩 추가
+  };
+
+  const handleCardClick = (card) => {
+    setClickCounts(prevClickCounts => ({
+      ...prevClickCounts,
+      [card.name]: (prevClickCounts[card.name] || 0) + 1
+    }));
+    history.push(`/detailPage?name=${card.name}&company=${card.company}`);
   };
 
   return (
@@ -71,7 +81,7 @@ function ListPage() {
       <div className="list">
         <div className="overlap-group">
           {filteredCards.slice(0, visibleCards).map((card) => (
-            <div key={card.name} className="rectangle">
+            <div key={card.name} className="rectangle" onClick={() => handleCardClick(card)}>
               <img src={card.image} alt={card.name} />
               <div className="card-info">
                 <div className="card-company"><div className="frame"><div className="text-wrapper-2">{card.company}</div></div></div>
