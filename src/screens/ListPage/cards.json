@@ -4,27 +4,43 @@
         "company": "Company A",
         "benefits": ["Benefit 1", "Benefit 2"],
         "hashtags": ["Tag1", "Tag2"],
-        "image": "card1.jpg"
+        "annualFee": " ",
+        "notes": "유의사항",
+        "additionalInfo": "additionalInfo",
+        "image": "card1.jpg",
+        "redirection": "https://www.example.com/apply/card1"
     },
     {
         "name": "Card 2",
         "company": "Company B",
         "benefits": ["Benefit 3", "Benefit 4"],
         "hashtags": ["Tag2", "Tag3"],
-        "image": "card2.jpg"
+        "annualFee": " ",
+        "notes": "유의사항",
+        "additionalInfo": "additionalInfo",
+        "image": "card2.jpg",
+        "redirection": "https://www.example.com/apply/card2"
     },
     {
         "name": "Card 3",
         "company": "Company C",
         "benefits": ["Benefit 5", "Benefit 6"],
         "hashtags": ["Tag3", "Tag4"],
-        "image": "card3.jpg"
+        "annualFee": " ",
+        "notes": "유의사항",
+        "additionalInfo": "additionalInfo",
+        "image": "card3.jpg",
+        "redirection": "https://www.example.com/apply/card3"
     },
     {
         "name": "Card 4",
         "company": "Company D",
         "benefits": ["Benefit 7", "Benefit 8"],
         "hashtags": ["Tag4", "Tag5"],
-        "image": "card4.jpg"
+        "annualFee": " ",
+        "notes": "유의사항",
+        "additionalInfo": "additionalInfo",
+        "image": "card4.jpg",
+        "redirection": "https://www.example.com/apply/card4"
     }
 ]
