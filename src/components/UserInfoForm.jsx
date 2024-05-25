@@ -8,15 +8,15 @@ const UserInfoForm = ({ onSubmit }) => {
         gender: '',
         residence1: '',
         residence2: '',
-        locations: [{ departure: '', destination: '' }]
+        locations: [{ departure: '', destination: '', frequency: '' }]
     });
 
     const navigate = useNavigate();
 
-    const handleChange = (e, index) => {
-        const { name, value } = e.target;
+    const handleChange = (e, index, field) => {
+        const { value } = e.target;
         const newLocations = [...formData.locations];
-        newLocations[index] = { ...newLocations[index], [name]: value };
+        newLocations[index] = { ...newLocations[index], [field]: value };
         setFormData({
             ...formData,
             locations: newLocations
@@ -26,7 +26,7 @@ const UserInfoForm = ({ onSubmit }) => {
     const handleAddLocation = () => {
         setFormData({
             ...formData,
-            locations: [...formData.locations, { departure: '', destination: '' }]
+            locations: [...formData.locations, { departure: '', destination: '', frequency: '' }]
         });
     };
 
@@ -91,24 +91,43 @@ const UserInfoForm = ({ onSubmit }) => {
                         onChange={(e) => setFormData({ ...formData, residence2: e.target.value })}
                     />
                 </div>
-                <div>
-                    <h3>사용패턴</h3>
+                <div className="pattern-container">
                     {formData.locations.map((location, index) => (
-                        <div key={index}>
-                            <input
-                                type="text"
-                                id={`departure-${index}`}
-                                name={`departure-${index}`}
-                                placeholder="출발지"
-                                onChange={(e) => handleChange(e, index)}
-                            />
-                            <input
-                                type="text"
-                                id={`destination-${index}`}
-                                name={`destination-${index}`}
-                                placeholder="도착지"
-                                onChange={(e) => handleChange(e, index)}
-                            />
+                        <div key={index} className="pattern">
+                            <div className="pattern1">
+                                <h3>사용패턴</h3>
+                                <div className="pattern-location">
+                                    <input
+                                        type="text"
+                                        id={`departure-${index}`}
+                                        name="departure"
+                                        placeholder="출발지"
+                                        onChange={(e) => handleChange(e, index, 'departure')}
+                                    />
+                                    <input
+                                        type="text"
+                                        id={`destination-${index}`}
+                                        name="destination"
+                                        placeholder="도착지"
+                                        onChange={(e) => handleChange(e, index, 'destination')}
+                                    />
+                                </div>
+                            </div>
+                            <div className="pattern2">
+                                <h3>사용횟수</h3>
+                                <div className="frequency">
+                                    <div className="frequency-text">주</div>
+                                    <input
+                                        className="frequency-number"
+                                        type="number"
+                                        id={`frequency-${index}`}
+                                        name="frequency"
+                                        placeholder=" "
+                                        onChange={(e) => handleChange(e, index, 'frequency')}
+                                    />
+                                    <div className="frequency-text">회</div>
+                                </div>
+                            </div>
                             <button type="button" className="minus" onClick={() => handleRemoveLocation(index)}>-</button>
                         </div>
                     ))}
@@ -121,4 +140,5 @@ const UserInfoForm = ({ onSubmit }) => {
 };
 
 export default UserInfoForm;
+
 

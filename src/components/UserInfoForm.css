@@ -45,12 +45,12 @@ input::placeholder {
 }
 
 .userInfo {
-    flex : 6;
+    flex : 3;
     border-left: 1px solid #E3E4FF;
 }
 
 .comments {
-    flex : 4;
+    flex : 1;
 }
 
 h2 {
@@ -75,6 +75,11 @@ p {
     border: none;
 }
 
+.minus {
+    margin-top: 82px;
+    margin-left: 30px;
+}
+
 .minus:hover, .plus:hover {
     background-color: gray;
     color: white;
@@ -86,7 +91,7 @@ p {
 
 .submit {
     margin-top: 30px;
-    margin-left: 425px;
+    margin-left: 645px;
     width: 180px;
     height: 30px;
     border: none;
@@ -100,5 +105,38 @@ p {
     position: relative;
     overflow: hidden;
     cursor: pointer;
+}
+
+.submit:hover {
+    background: #fff;
+    color: #1D24CA;
+    border: 1.5px solid;
+    border-color: #1D24CA;
+}
+
+.container .pattern {
+    display: flex;
+}
+
+.container .frequency {
+    display: flex;
+    margin-left: 40px;
+}
+
+.container .frequency-text {
+    margin-top: 25px;
+}
+
+.container .frequency-number {
+    width: 30px;
+}
+
+.container .pattern1, .container .pattern2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.container .pattern-location {
+    display: flex;
 }
 
