@@ -13,10 +13,12 @@ function ListPage() {
     government: true,
     localGovernment: true,
     cardCompany: true,
-    otherCategory: true,
     specifiedAmount: true,
     discount: true,
-    refund: true
+    refund: true,
+    checkCard: true,
+    creditCard: true,
+    other: true
   });
 
   const [clickCounts, setClickCounts] = useState({});
@@ -33,15 +35,25 @@ function ListPage() {
   };
 
   const filteredCards = cards.filter((card) => {
-    return (
-      (filters.government) ||
-      (filters.localGovernment) ||
-      (filters.cardCompany) ||
-      (filters.otherCategory) ||
-      (filters.specifiedAmount) ||
-      (filters.discount) ||
-      (filters.refund)
+    const matchesSubject = (
+      (filters.government && card.subject === '정부') ||
+      (filters.localGovernment && card.subject === '지자체') ||
+      (filters.cardCompany && card.subject === '카드사')
     );
+
+    const matchesBenefitType = (
+      (filters.specifiedAmount && card.benefitType === '지정금액') ||
+      (filters.discount && card.benefitType === '할인') ||
+      (filters.refund && card.benefitType === '환급')
+    );
+
+    const matchesCardType = (
+      (filters.checkCard && card.cardType === '체크카드') ||
+      (filters.creditCard && card.cardType === '신용카드') ||
+      (filters.other && card.cardType === '기타')
+    );
+
+    return matchesSubject && matchesBenefitType && matchesCardType;
   });
 
   const handleLoadMore = () => {
@@ -63,18 +75,23 @@ function ListPage() {
         <div className="left">
           <div className="left-line">주체</div>
           <div className="left-line">혜택유형</div>
+          <div className="left-line">혜택종류</div>
         </div>
         <div className="right">
           <div className="line">
             <CheckBox label="정부" isChecked={filters.government} onChange={() => handleFilterChange('government')} />
             <CheckBox label="지자체" isChecked={filters.localGovernment} onChange={() => handleFilterChange('localGovernment')} />
             <CheckBox label="카드사" isChecked={filters.cardCompany} onChange={() => handleFilterChange('cardCompany')} />
-            <CheckBox label="기타" isChecked={filters.otherCategory} onChange={() => handleFilterChange('otherCategory')} />
           </div>
           <div className="line">
             <CheckBox label="지정금액" isChecked={filters.specifiedAmount} onChange={() => handleFilterChange('specifiedAmount')} />
             <CheckBox label="할인" isChecked={filters.discount} onChange={() => handleFilterChange('discount')} />
             <CheckBox label="환급" isChecked={filters.refund} onChange={() => handleFilterChange('refund')} />
+          </div>
+          <div className="line">
+            <CheckBox label="체크카드" isChecked={filters.checkCard} onChange={() => handleFilterChange('checkCard')} />
+            <CheckBox label="신용카드" isChecked={filters.creditCard} onChange={() => handleFilterChange('creditCard')} />
+            <CheckBox label="기타" isChecked={filters.other} onChange={() => handleFilterChange('other')} />
           </div>
         </div>
       </div>
@@ -103,3 +120,4 @@ function ListPage() {
 }
 
 export default ListPage;
+

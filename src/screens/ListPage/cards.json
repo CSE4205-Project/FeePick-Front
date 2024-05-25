@@ -8,7 +8,10 @@
         "notes": "유의사항",
         "additionalInfo": "additionalInfo",
         "image": "card1.jpg",
-        "redirection": "https://www.example.com/apply/card1"
+        "redirection": "https://www.example.com/apply/card1",
+        "subject": "정부",
+        "benefitType": "지정금액",
+        "cardType": "체크카드"
     },
     {
         "name": "Card 2",
@@ -19,7 +22,10 @@
         "notes": "유의사항",
         "additionalInfo": "additionalInfo",
         "image": "card2.jpg",
-        "redirection": "https://www.example.com/apply/card2"
+        "redirection": "https://www.example.com/apply/card2",
+        "subject": "지자체",
+        "benefitType": "할인",
+        "cardType": "신용카드"
     },
     {
         "name": "Card 3",
@@ -30,7 +36,10 @@
         "notes": "유의사항",
         "additionalInfo": "additionalInfo",
         "image": "card3.jpg",
-        "redirection": "https://www.example.com/apply/card3"
+        "redirection": "https://www.example.com/apply/card3",
+        "subject": "카드사",
+        "benefitType": "환급",
+        "cardType": "기타"
     },
     {
         "name": "Card 4",
@@ -41,6 +50,9 @@
         "notes": "유의사항",
         "additionalInfo": "additionalInfo",
         "image": "card4.jpg",
-        "redirection": "https://www.example.com/apply/card4"
+        "redirection": "https://www.example.com/apply/card4",
+        "subject": "카드사",
+        "benefitType": "할인",
+        "cardType": "체크카드"
     }
 ]
