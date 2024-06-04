@@ -4,14 +4,20 @@
     margin-top: 50px;
 }
 
-.detail-container .left, .detail-container .right{
-    flex: 1;
+.detail-container .left {
+    flex: 4;
+    margin-left: 250px;
+}
+
+.detail-container .right{
+    flex: 6;
 }
 
 .detail-page hr {
     background-color: #d9d9d9;
     height: 1.5px;
     border:none;
+    width: 50%;
 }
 
 .detail-page hr.line1 {
@@ -24,6 +30,7 @@
 
 .detail-page h2 {
     margin-left: 38px;
+    margin-bottom: 38px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
@@ -37,8 +44,8 @@
 }
 
 .detail-page .redirection {
-    margin-left: 505px;
     margin-top: 30px;
+    margin-left: 620px;
     margin-bottom: 30px;
     width: 130px;
     height: 25px;
@@ -55,4 +62,79 @@
     border: 1.5px solid #1D24CA;
     background-color: white;
     color: #1D24CA;
+}
+
+.detail-page .additionalInfo {
+    margin: 0;
+    background-color: #F0F0FF;
+    overflow-y: auto;
+}
+
+.detail-page .info {
+    font-size: 12px;
+}
+
+.detail-page .info-container {
+    padding: 10px;
+    margin-right: 365px;
+    margin-left: 325px;
+    margin-top: 20px;
+    background-color: #F9FAFD;
+}
+
+body {
+    margin: 0;
+}
+
+.detail-page .annualFeeTableContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.detail-page h4, .detail-page .notes {
+    margin-left: 400px;
+}
+
+.detail-page .annualFeeTable {
+    border-collapse: collapse;
+}
+
+.annualFeeTable th {
+    font-weight: normal;
+    border-bottom: 1px solid #d9d9d9;
+    padding: 8px 0;
+    position: relative;
+}
+
+.annualFeeTable th::after {
+    content: '';
+    position: absolute;
+    left: 65%;
+    bottom: -1px; 
+    transform: translateX(-50%);
+    width: 400%; 
+    height: 1px; 
+    background-color: #d9d9d9; 
+}
+
+.annualFeeTable td {
+    padding: 8px;
+    text-align: center;
+}
+
+.detail-page h5 {
+    margin-left: 20px;
+    font-size: 15px;
+    color: #232629;
+}
+
+.additionalInfo ol {
+    list-style-type: none;
+    padding-left: 1.5em;
+}
+  
+.additionalInfo ol li::before {
+    content: "•"; 
+    display: inline-block;
+    width: 1em; 
 }

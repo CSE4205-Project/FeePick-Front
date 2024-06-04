@@ -81,7 +81,7 @@ p {
 }
 
 .minus:hover, .plus:hover {
-    background-color: gray;
+    background-color: #949CA4;
     color: white;
 }
 
