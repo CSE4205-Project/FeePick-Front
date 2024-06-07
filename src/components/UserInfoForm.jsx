@@ -1,6 +1,13 @@
 import './UserInfoForm.css';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import config from '../../config';
+
+const cities = {
+    "서울특별시": ["강남구", "강동구", "강북구", "강서구", "관악구", "광진구", "구로구", "금천구", "노원구", "도봉구", "동대문구", "동작구", "마포구", "서대문구", "서초구", "성동구", "성북구", "송파구", "양천구", "영등포구", "용산구", "은평구", "종로구", "중구", "중랑구"],
+    "경기도": ["가평군", "고양시", "과천시", "광명시", "광주시", "구리시", "군포시", "김포시", "남양주시", "동두천시", "부천시", "성남시", "수원시", "시흥시", "안산시", "안성시", "안양시", "양주시", "양평군", "여주시", "연천군", "오산시", "용인시", "의왕시", "의정부시", "이천시", "파주시", "평택시", "포천시", "하남시", "화성시"],
+    "인천광역시": ["강화군", "계양구", "미추홀구", "남동구", "동구", "부평구", "서구", "연수구", "옹진군", "중구"],
+};
 
 const UserInfoForm = ({ onSubmit }) => {
     const [formData, setFormData] = useState({
@@ -12,6 +19,14 @@ const UserInfoForm = ({ onSubmit }) => {
     });
 
     const navigate = useNavigate();
+
+    const handleCityChange = (e) => {
+        setFormData({
+            ...formData,
+            residence1: e.target.value,
+            residence2: '' 
+        });
+    };
 
     const handleChange = (e, index, field) => {
         const { value } = e.target;
@@ -39,17 +54,33 @@ const UserInfoForm = ({ onSubmit }) => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        onSubmit(formData);
-        navigate("/calPage");
+        try {
+            const response = await fetch(`${config.serverUrl}/user/data`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                onSubmit(result);
+                navigate("/calPage");
+            } else {
+                console.error('Server error:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Network error:', error);
+        }
     };
 
     return (
         <div className="container">
             <div className="comments">
-                <h2>Fill out the form!</h2>
-                <p>comments for detail</p>
+                <h2>Plz fill out the form!</h2>
             </div>
             <form onSubmit={handleSubmit} className="userInfo">
                 <div>
@@ -76,20 +107,29 @@ const UserInfoForm = ({ onSubmit }) => {
                 </div>
                 <div>
                     <h3>거주지역</h3>
-                    <input
-                        type="text"
+                    <select
                         id="residence1"
                         name="residence1"
-                        placeholder="시"
-                        onChange={(e) => setFormData({ ...formData, residence1: e.target.value })}
-                    />
-                    <input
-                        type="text"
+                        value={formData.residence1}
+                        onChange={handleCityChange}
+                    >
+                        <option value=""></option>
+                        {Object.keys(cities).map(city => (
+                            <option key={city} value={city}>{city}</option>
+                        ))}
+                    </select>
+                    <select
                         id="residence2"
                         name="residence2"
-                        placeholder="군/구"
+                        value={formData.residence2}
                         onChange={(e) => setFormData({ ...formData, residence2: e.target.value })}
-                    />
+                        disabled={!formData.residence1}
+                    >
+                        <option value=""></option>
+                        {formData.residence1 && cities[formData.residence1].map(district => (
+                            <option key={district} value={district}>{district}</option>
+                        ))}
+                    </select>
                 </div>
                 <div className="pattern-container">
                     {formData.locations.map((location, index) => (
@@ -98,6 +138,7 @@ const UserInfoForm = ({ onSubmit }) => {
                                 <h3>사용패턴</h3>
                                 <div className="pattern-location">
                                     <input
+                                        className="location-input"
                                         type="text"
                                         id={`departure-${index}`}
                                         name="departure"
@@ -105,6 +146,7 @@ const UserInfoForm = ({ onSubmit }) => {
                                         onChange={(e) => handleChange(e, index, 'departure')}
                                     />
                                     <input
+                                        className="location-input"
                                         type="text"
                                         id={`destination-${index}`}
                                         name="destination"
@@ -128,7 +170,9 @@ const UserInfoForm = ({ onSubmit }) => {
                                     <div className="frequency-text">회</div>
                                 </div>
                             </div>
-                            <button type="button" className="minus" onClick={() => handleRemoveLocation(index)}>-</button>
+                            <div className="pattern3">
+                                <button type="button" className="minus" onClick={() => handleRemoveLocation(index)}>-</button>
+                            </div>
                         </div>
                     ))}
                     <button type="button" className="plus" onClick={handleAddLocation}>+</button>
@@ -140,5 +184,6 @@ const UserInfoForm = ({ onSubmit }) => {
 };
 
 export default UserInfoForm;
+
 
 
