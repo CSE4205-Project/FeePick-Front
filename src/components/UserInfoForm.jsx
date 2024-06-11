@@ -11,11 +11,11 @@ const cities = {
 
 const UserInfoForm = ({ onSubmit }) => {
     const [formData, setFormData] = useState({
-        age: '',
-        gender: '',
-        residence1: '',
-        residence2: '',
-        locations: [{ departure: '', destination: '', frequency: '' }]
+        age: 0,
+        gender: "",
+        residence1: "",
+        residence2: "",
+        locations: [{ departure: "", destination: "", frequency: 0 }],
     });
 
     const navigate = useNavigate();
@@ -31,7 +31,7 @@ const UserInfoForm = ({ onSubmit }) => {
     const handleChange = (e, index, field) => {
         const { value } = e.target;
         const newLocations = [...formData.locations];
-        newLocations[index] = { ...newLocations[index], [field]: value };
+        newLocations[index] = { ...newLocations[index], [field]: field === 'frequency' ? Number(value) : value };
         setFormData({
             ...formData,
             locations: newLocations
@@ -56,6 +56,7 @@ const UserInfoForm = ({ onSubmit }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log(formData);
         try {
             const response = await fetch(`${config.serverUrl}/user/data`, {
                 method: 'POST',
@@ -89,7 +90,7 @@ const UserInfoForm = ({ onSubmit }) => {
                         id="age"
                         name="age"
                         placeholder="나이"
-                        onChange={(e) => setFormData({ ...formData, age: e.target.value })}
+                        onChange={(e) => setFormData({ ...formData, age: Number(e.target.value) })}
                     />
                 </div>
                 <div>
@@ -99,7 +100,7 @@ const UserInfoForm = ({ onSubmit }) => {
                         placeholder="성별"
                         onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
                     >
-                        <option value="">성별을 선택해주세요</option>
+                        <option value="">성별</option>
                         <option value="male">남성</option>
                         <option value="female">여성</option>
                         <option value="other">선택하지 않음</option>
