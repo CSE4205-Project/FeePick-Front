@@ -33,6 +33,7 @@ nav {
     float: left;
     vertical-align: middle;
     text-align: center;
+    margin-left: 20px;
 }
 
 .topMenu ul li a {

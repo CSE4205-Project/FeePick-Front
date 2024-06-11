@@ -59,7 +59,7 @@ const DetailPage = () => {
       <Header />
       <div className="detail-container">
         <div className="left">
-          <img src={card.image} alt={card.name} />
+          <img src={`img/${card.image}`} alt={card.name} onError={(e) => e.target.src = 'img/default.png'} />
         </div>
         <div className="right">
           <h2>{card.name}</h2>
