@@ -7,28 +7,7 @@ import { BiCoffeeTogo } from "react-icons/bi";
 import { FaArrowRight } from "react-icons/fa";
 
 const Recommendation = () => {
-    // 컨텐츠와 현재 보여지는 컨텐츠의 인덱스를 관리하는 상태
     const [currentContent, setCurrentContent] = useState(0);
-    const contents = [
-        {
-            number: 1,
-            title: '기후동행카드',
-            paragraphs: [<IoMdSubway />, <IoMdCart />, <BiCoffeeTogo />],
-            image: 'example1.png'
-        },
-        {
-            number: 2,
-            title: '신한 알뜰교통카드',
-            paragraphs: [<IoMdSubway />, <IoIosBook />, <IoIosHeadset />],
-            image: 'example2.png'
-        },
-        {
-            number: 3,
-            title: '',
-            paragraphs: [<IoMdSubway />, <IoAirplane />, <IoMdMedkit />],
-            image: 'image3.jpg'
-        }
-    ];
 
     const navigate = useNavigate();
 
@@ -43,12 +22,20 @@ const Recommendation = () => {
     };
 
     const handleMoreInfo = () => {
-        navigate("/detailPage");
+        setClickCounts((prevClickCounts) => ({
+            ...prevClickCounts,
+            [currentResult.benefit.name]: (prevClickCounts[currentResult.benefit.name] || 0) + 1,
+        }));
+        navigate(`/detailPage?name=${currentResult.benefit.name}`);
     };
 
     const handleRedirection = () => {
-        navigate("https://www.shinhancard.com/pconts/html/card/apply/credit/1188458_2207.html");
+        if (currentResult.benefit && currentResult.benefit.url) {
+            window.location.href = currentResult.benefit.url;
+          }
     };
+
+    const currentResult = result[currentIndex];
 
     return (
         <div className="whole-container">
@@ -58,16 +45,16 @@ const Recommendation = () => {
             <div className="middle">
                 <div className="recommended">
                     <div className="card">
-                        <img src={`/img/${contents[currentContent].image}`} alt={contents[currentContent].title}/>
+                        <img src={`/img/${currentResult.benefit.description.image}`} alt={currentResult.benefit.name}/>
                     </div>
                     <div className="features">
-                    <h2>
-                        <span className="h2-num">Best {contents[currentContent].number}.</span> 
-                        <span className="h2-title">{contents[currentContent].title}</span>
-                    </h2>
-                    {contents[currentContent].paragraphs.map((paragraph, index) => (
-                        <p key={index}>{paragraph}</p>
-                    ))}
+                        <h2>
+                            <span className="h2-num">Best {currentResult + 1}.</span> 
+                            <span className="h2-title">{currentResult.benefit.name}</span>
+                        </h2>
+                        {currentResult.benefit.benefits.map((benefit, index) => (
+                            <p key={index}>{benefit}</p>
+                        ))}
                         <div className="buttons">
                             <button className="more-info" onClick={handleMoreInfo}>
                                 더 알아보기<FaArrowRight className="go"/>
@@ -80,7 +67,7 @@ const Recommendation = () => {
                 </div>
             </div>
             <div className="right" onClick={handleNextClick}>
-            <button className="arrow"><IoIosArrowDroprightCircle /></button>
+                <button className="arrow"><IoIosArrowDroprightCircle /></button>
             </div>
         </div>
     );

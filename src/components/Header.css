@@ -17,6 +17,7 @@
 
 .topMenu {
     height : 40px;
+    width: 100%;
     background-color : #E3E4FF;
 }
 
@@ -44,4 +45,8 @@ nav {
 
 .topMenu ul li a:hover {
     color : #1D24CA;
+}
+
+header {
+    width: 100%;
 }

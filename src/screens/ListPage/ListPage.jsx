@@ -24,7 +24,7 @@ const ListPage = () => {
   const [filteredCards, setFilteredCards] = useState([]);
 
   useEffect(() => {
-    fetch(`${config.serverUrl}/benefit/list`, {
+    fetch(`${config.serverUrl}/benefit/test`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -161,7 +161,7 @@ const ListPage = () => {
         <div className="overlap-group">
           {filteredCards.slice(0, visibleCards).map((card) => (
             <div key={card.name} className="rectangle" onClick={() => handleCardClick(card)}>
-              <img src={card.image} alt={" "} />
+              <img src={`img/${card.image}`} alt={card.name} onError={(e) => e.target.src = 'img/default.png'}/>
               <div className="card-info">
                 <div className="card-company">
                   <div className="frame">
