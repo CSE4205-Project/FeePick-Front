@@ -5,7 +5,7 @@ import "./CalPage.css";
 
 const CalPage = () => {
   return (
-    <div>
+    <div className="calPage">
       <Header />
       <Recommendation />
     </div>

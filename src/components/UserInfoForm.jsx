@@ -2,6 +2,7 @@ import './UserInfoForm.css';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import config from '../../config';
+import DaumPost from './DaumPost';
 
 const cities = {
     "서울특별시": ["강남구", "강동구", "강북구", "강서구", "관악구", "광진구", "구로구", "금천구", "노원구", "도봉구", "동대문구", "동작구", "마포구", "서대문구", "서초구", "성동구", "성북구", "송파구", "양천구", "영등포구", "용산구", "은평구", "종로구", "중구", "중랑구"],
@@ -15,7 +16,8 @@ const UserInfoForm = ({ onSubmit }) => {
         gender: "",
         residence1: "",
         residence2: "",
-        locations: [{ departure: "", destination: "", frequency: 0 }],
+        location: [{ departure: "", destination: "", frequency: 0 }],
+        specialCase: false
     });
 
     const navigate = useNavigate();
@@ -28,29 +30,38 @@ const UserInfoForm = ({ onSubmit }) => {
         });
     };
 
-    const handleChange = (e, index, field) => {
-        const { value } = e.target;
-        const newLocations = [...formData.locations];
-        newLocations[index] = { ...newLocations[index], [field]: field === 'frequency' ? Number(value) : value };
+    const handleAddressChange = (index, field, address) => {
+        const newLocation = [...formData.location];
+        newLocation[index] = { ...newLocation[index], [field]: address };
         setFormData({
             ...formData,
-            locations: newLocations
+            location: newLocation
+        });
+    };
+
+    const handleChange = (e, index, field) => {
+        const { value } = e.target;
+        const newLocation = [...formData.location];
+        newLocation[index] = { ...newLocation[index], [field]: field === 'frequency' ? Number(value) : value };
+        setFormData({
+            ...formData,
+            location: newLocation
         });
     };
 
     const handleAddLocation = () => {
         setFormData({
             ...formData,
-            locations: [...formData.locations, { departure: '', destination: '', frequency: '' }]
+            location: [...formData.location, { departure: "", destination: "", frequency: 0 }]
         });
     };
 
     const handleRemoveLocation = (index) => {
-        const newLocations = [...formData.locations];
-        newLocations.splice(index, 1);
+        const newLocation = [...formData.location];
+        newLocation.splice(index, 1);
         setFormData({
             ...formData,
-            locations: newLocations
+            location: newLocation
         });
     };
 
@@ -69,7 +80,7 @@ const UserInfoForm = ({ onSubmit }) => {
             if (response.ok) {
                 const result = await response.json();
                 onSubmit(result);
-                navigate("/calPage");
+                navigate("/calPage", { state: { result } });
             } else {
                 console.error('Server error:', response.statusText);
             }
@@ -133,27 +144,13 @@ const UserInfoForm = ({ onSubmit }) => {
                     </select>
                 </div>
                 <div className="pattern-container">
-                    {formData.locations.map((location, index) => (
+                    {formData.location.map((location, index) => (
                         <div key={index} className="pattern">
                             <div className="pattern1">
                                 <h3>사용패턴</h3>
                                 <div className="pattern-location">
-                                    <input
-                                        className="location-input"
-                                        type="text"
-                                        id={`departure-${index}`}
-                                        name="departure"
-                                        placeholder="출발지"
-                                        onChange={(e) => handleChange(e, index, 'departure')}
-                                    />
-                                    <input
-                                        className="location-input"
-                                        type="text"
-                                        id={`destination-${index}`}
-                                        name="destination"
-                                        placeholder="도착지"
-                                        onChange={(e) => handleChange(e, index, 'destination')}
-                                    />
+                                    <DaumPost setAddress={(address) => handleAddressChange(index, 'departure', address)} label="출발지 >"/>
+                                    <DaumPost setAddress={(address) => handleAddressChange(index, 'destination', address)} label="도착지 >"/>
                                 </div>
                             </div>
                             <div className="pattern2">

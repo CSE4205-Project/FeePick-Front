@@ -1,0 +1,29 @@
+.find_address_button {
+    background-color: #E3E4FF;
+    appearance: none;
+    width: 77%;
+    height: 30px;
+    border-radius: 2rem;
+    border:none;
+    padding: 1rem 1rem .5rem;
+    margin: 10px 0 10px 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: gray;
+    font-size: 20px;
+    text-align: center;
+}
+
+.find_address_button:hover {
+    background-color: #F9FAFD;
+    color: #E3E4FF;
+    border: 1.5px solid;
+    border-color: #E3E4FF;
+}
+
+@media (max-width:767px) {
+    .find_address_button {
+        width: 40%;
+    }
+}
+
