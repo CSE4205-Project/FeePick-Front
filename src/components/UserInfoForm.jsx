@@ -144,17 +144,19 @@ const UserInfoForm = ({ onSubmit }) => {
                     </select>
                 </div>
                 <div className="pattern-container">
+                    <div className="pattern-title">
+                        <h3 className="title1">사용패턴</h3>
+                        <h3 className="title2">사용횟수</h3>
+                    </div>
                     {formData.location.map((location, index) => (
                         <div key={index} className="pattern">
                             <div className="pattern1">
-                                <h3>사용패턴</h3>
                                 <div className="pattern-location">
                                     <DaumPost setAddress={(address) => handleAddressChange(index, 'departure', address)} label="출발지 >"/>
                                     <DaumPost setAddress={(address) => handleAddressChange(index, 'destination', address)} label="도착지 >"/>
                                 </div>
                             </div>
                             <div className="pattern2">
-                                <h3>사용횟수</h3>
                                 <div className="frequency">
                                     <div className="frequency-text">주</div>
                                     <input
@@ -173,7 +175,9 @@ const UserInfoForm = ({ onSubmit }) => {
                             </div>
                         </div>
                     ))}
-                    <button type="button" className="plus" onClick={handleAddLocation}>+</button>
+                    <p>
+                        <button type="button" className="plus" onClick={handleAddLocation}>+</button>
+                    </p>
                 </div>
                 <button className="submit" type="submit">혜택 계산하러 가기 →</button>
             </form>

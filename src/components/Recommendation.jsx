@@ -7,18 +7,19 @@ import { BiCoffeeTogo } from "react-icons/bi";
 import { FaArrowRight } from "react-icons/fa";
 
 const Recommendation = () => {
+    const [clickCounts, setClickCounts] = useState({});
     const [currentIndex, setCurrentIndex] = useState(0);
     const location = useLocation();
     const result = location.state?.result;
-    console.log(result[currentIndex]);
+    console.log(result.benefit_list[currentIndex]);
     const navigate = useNavigate();
 
     const handlePrevClick = () => {
-        setCurrentIndex((prevIndex) => (prevIndex === 0 ? result.length - 1 : prevIndex - 1));
+        setCurrentIndex((prevIndex) => (prevIndex === 0 ? result.benefit_list.length - 1 : prevIndex - 1));
     };
 
     const handleNextClick = () => {
-        setCurrentIndex((prevIndex) => (prevIndex === result.length - 1 ? 0 : prevIndex + 1));
+        setCurrentIndex((prevIndex) => (prevIndex === result.benefit_list.length - 1 ? 0 : prevIndex + 1));
     };
 
     const handleMoreInfo = () => {
@@ -35,7 +36,7 @@ const Recommendation = () => {
           }
     };
 
-    const currentResult = result[currentIndex];
+    const currentResult = result.benefit_list[currentIndex];
 
     return (
         <div className="whole-container">
@@ -56,6 +57,15 @@ const Recommendation = () => {
                             {currentResult.benefit.description.benefits.map((benefit, index) => (
                                 <p key={index}>{benefit}</p>
                             ))}
+                        </div>
+                        <div className="fee">
+                            <div className="before"> 
+                                ₩{result.before_fee}
+                            </div>
+                            ►
+                            <div className="after">
+                                ₩{currentResult.fee}
+                            </div>
                         </div>
                         <div className="buttons">
                             <button className="more-info" onClick={handleMoreInfo}>

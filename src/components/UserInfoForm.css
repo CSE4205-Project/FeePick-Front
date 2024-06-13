@@ -18,6 +18,12 @@ input {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 select {
     text-align: center;
     background-color: #E3E4FF;
@@ -75,7 +81,8 @@ h3 {
 }
 
 .minus {
-    margin-top: 82px;
+    margin-top: 23px;
+    margin-left: 10px;
 }
 
 .minus:hover, .plus:hover {
@@ -112,8 +119,26 @@ h3 {
     border-color: #1D24CA;
 }
 
-.container .pattern {
+.container .pattern-title {
     display: flex;
+    width: 100%;
+}
+
+.container .pattern-title .title1 {
+    flex: 5;
+}
+
+.container .pattern-title .title2 {
+    flex: 2.8;
+}
+
+.container .pattern-title {
+    display: flex;
+}
+
+.container .pattern {
+    display: inline-flex;
+    width: 100%;
 }
 
 .container .frequency {
@@ -126,7 +151,7 @@ h3 {
 }
 
 .container .frequency-number {
-    width: 30px;
+    width: 40px;
     margin: 10px;
 }
 
@@ -141,7 +166,7 @@ h3 {
 }
 
 .container .pattern1 {
-    flex: 8;
+    flex: 5;
 }
 
 .container .pattern2 {
@@ -168,6 +193,7 @@ h3 {
     
     .container .pattern2 {
         flex: 2;
+        margin-left: 10px;
     }
     
     .container .pattern3 {
@@ -186,5 +212,13 @@ h3 {
     
     .container {
         margin-left: 15px;
+    }
+
+    .container .pattern-title .title1 {
+        flex: 1;
+    }
+    
+    .container .pattern-title .title2 {
+        flex: 1.2;
     }
 }
