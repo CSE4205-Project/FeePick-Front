@@ -185,3 +185,20 @@
 .whole-container .arrow:hover {
     color: #1D24CA;
 }
+
+.fee {
+    display: inline-flex;
+    font-size: 13px;
+    font-weight: 700;
+    color: gray;
+}
+
+.fee .before {
+    color: gray;
+    margin-right: 12px;
+}
+
+.fee .after {
+    color: #1D24CA;
+    margin-left: 10px;
+}
