@@ -3,22 +3,27 @@ form {
 }
 
 input {
+    color: gray;
+    font-size: 20px;
+    text-align: center;
     background-color: #E3E4FF;
     appearance: none;
-    width: 17%;
-    height: 30px;
+    width: 23.7%;
+    height: auto;
     border-radius: 2rem;
     border:none;
-    padding: 1rem 1rem .5rem;
+    padding: 1rem;
     margin: 10px 0 10px 30px;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 select {
+    text-align: center;
     background-color: #E3E4FF;
     appearance: none;
-    width: 27.39%;
+    width: 27.9%;
+    max-width: 240px;
     height: auto;
     border-radius: 2rem;
     border:none;
@@ -122,6 +127,7 @@ h3 {
 
 .container .frequency-number {
     width: 30px;
+    margin: 10px;
 }
 
 .container .pattern1, .container .pattern2 {
@@ -131,10 +137,11 @@ h3 {
 
 .container .pattern-location {
     display: flex;
+    width: 100%;
 }
 
 .container .pattern1 {
-    flex: 5;
+    flex: 8;
 }
 
 .container .pattern2 {
@@ -148,4 +155,36 @@ h3 {
 .location-input {
     width: 100%;
     margin-right: 0;
+}
+
+@media (max-width:767px) {
+    input {
+        width: 17%;
+    }
+
+    .container .pattern1 {
+        flex: 4;
+    }
+    
+    .container .pattern2 {
+        flex: 2;
+    }
+    
+    .container .pattern3 {
+        flex: 1;
+        margin-left: 10px;
+    }
+
+    .container .frequency-number {
+        width: 22px;
+        margin: 10px;
+    }
+
+    .comments {
+        margin-right: 10px;
+    }
+    
+    .container {
+        margin-left: 15px;
+    }
 }

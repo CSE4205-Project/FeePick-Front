@@ -48,33 +48,28 @@
 }
 
 .whole-container {
-    display: flex;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: row;
     margin-top: 50px;
 }
 
-.whole-container .left, .whole-container .right {
-    flex: 1;
-    margin-top: 170px;
-}
-
 .whole-container .left {
-    padding-left: 240px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
 }
 
 .whole-container .right {
-    padding-right: 240px;
-}
-
-.whole-container .middle {
-    flex: 9;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 10px;
 }
 
 .whole-container .recommended {
-    position: absolute;
-    display: flex;
     height: 350px;
-    width: 700px;
+    display: flex;
     justify-content: space-between;
     align-items: flex-start;
     padding: 30px;
@@ -85,22 +80,25 @@
 }
 
 .whole-container .card {
-    padding: 20px;
-    flex: 1;
-    max-width: 50%;
+    flex: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .whole-container .features {
-    flex: 1;
-    max-width: 50%;
+    flex: 6;
+    margin-left: 5%;
 }
 
 .whole-container .card img {
     height: 300px;
+    margin-top: 25px;
     width: auto;
 }
 
 .whole-container h2 {
+    display: flex;
     font-family: 'GongGothicMedium';
     padding-top: 15px;
     padding-bottom: 10px;
@@ -108,18 +106,21 @@
 }
 
 .whole-container .h2-num {
+    white-space: nowrap;
     color: #1D24CA;
+    display: inline-block;
 }
 
 .whole-container .h2-title {
-    color:gray;
+    margin-right: 30px;
+    white-space: nowrap;
     margin-left: 10px;
+    display: inline-block;
 }
 
 .whole-container p {
-    color: gray;
-    font-size: 30px;
-    margin-bottom: 25px;
+    font-size: 18px;
+    margin-bottom: 30px;
     position: relative;
 }
 
@@ -149,10 +150,12 @@
 
 .whole-container .more-info {
     width: 120px;
+    margin-top: 30px;
 }
 
 .whole-container .redirection {
     width: 130px;
+    margin-top: 30px;
 }
 
 .whole-container .more-info-icon {
@@ -175,7 +178,7 @@
 .whole-container .arrow {
     color: gray;
     border: none;
-    background-color: #F9FAFD;
+    background-color: transparent;
     font-size: 40px;
 }
 

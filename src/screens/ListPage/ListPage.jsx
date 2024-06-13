@@ -95,94 +95,96 @@ const ListPage = () => {
   };
 
   return (
-    <div className="listing-page">
+    <div>
       <Header />
-      <div className="checkbox-container">
-        <div className="left">
-          <div className="left-line">주체</div>
-          <div className="left-line">혜택유형</div>
-          <div className="left-line">카드종류</div>
+      <div className="listing-page">
+        <div className="checkbox-container">
+          <div className="left">
+            <div className="left-line">주체</div>
+            <div className="left-line">혜택유형</div>
+            <div className="left-line">카드종류</div>
+          </div>
+          <div className="right">
+            <div className="line">
+              <CheckBox
+                label="정부"
+                isChecked={filters.government}
+                onChange={() => handleFilterChange('government')}
+              />
+              <CheckBox
+                label="지자체"
+                isChecked={filters.localGovernment}
+                onChange={() => handleFilterChange('localGovernment')}
+              />
+              <CheckBox
+                label="카드사"
+                isChecked={filters.cardCompany}
+                onChange={() => handleFilterChange('cardCompany')}
+              />
+            </div>
+            <div className="line">
+              <CheckBox
+                label="지정금액"
+                isChecked={filters.specifiedAmount}
+                onChange={() => handleFilterChange('specifiedAmount')}
+              />
+              <CheckBox
+                label="할인"
+                isChecked={filters.discount}
+                onChange={() => handleFilterChange('discount')}
+              />
+              <CheckBox
+                label="환급"
+                isChecked={filters.refund}
+                onChange={() => handleFilterChange('refund')}
+              />
+            </div>
+            <div className="line">
+              <CheckBox
+                label="체크카드"
+                isChecked={filters.checkCard}
+                onChange={() => handleFilterChange('checkCard')}
+              />
+              <CheckBox
+                label="신용카드"
+                isChecked={filters.creditCard}
+                onChange={() => handleFilterChange('creditCard')}
+              />
+              <CheckBox
+                label="기타"
+                isChecked={filters.other}
+                onChange={() => handleFilterChange('other')}
+              />
+            </div>
+          </div>
         </div>
-        <div className="right">
-          <div className="line">
-            <CheckBox
-              label="정부"
-              isChecked={filters.government}
-              onChange={() => handleFilterChange('government')}
-            />
-            <CheckBox
-              label="지자체"
-              isChecked={filters.localGovernment}
-              onChange={() => handleFilterChange('localGovernment')}
-            />
-            <CheckBox
-              label="카드사"
-              isChecked={filters.cardCompany}
-              onChange={() => handleFilterChange('cardCompany')}
-            />
-          </div>
-          <div className="line">
-            <CheckBox
-              label="지정금액"
-              isChecked={filters.specifiedAmount}
-              onChange={() => handleFilterChange('specifiedAmount')}
-            />
-            <CheckBox
-              label="할인"
-              isChecked={filters.discount}
-              onChange={() => handleFilterChange('discount')}
-            />
-            <CheckBox
-              label="환급"
-              isChecked={filters.refund}
-              onChange={() => handleFilterChange('refund')}
-            />
-          </div>
-          <div className="line">
-            <CheckBox
-              label="체크카드"
-              isChecked={filters.checkCard}
-              onChange={() => handleFilterChange('checkCard')}
-            />
-            <CheckBox
-              label="신용카드"
-              isChecked={filters.creditCard}
-              onChange={() => handleFilterChange('creditCard')}
-            />
-            <CheckBox
-              label="기타"
-              isChecked={filters.other}
-              onChange={() => handleFilterChange('other')}
-            />
-          </div>
-        </div>
-      </div>
-      <div className="list">
-        <div className="overlap-group">
-          {filteredCards.slice(0, visibleCards).map((card) => (
-            <div key={card.name} className="rectangle" onClick={() => handleCardClick(card)}>
-              <img src={`img/${card.image}`} alt={card.name} onError={(e) => e.target.src = 'img/default.png'}/>
-              <div className="card-info">
-                <div className="card-company">
-                  <div className="frame">
-                    <div className="text-wrapper-2">{card.hashtags[0]}</div>
+        <div className="list">
+          <div className="overlap-group">
+            {filteredCards.slice(0, visibleCards).map((card) => (
+              <div key={card.name} className="rectangle" onClick={() => handleCardClick(card)}>
+                <img src={`img/${card.image}`} alt={card.name} onError={(e) => e.target.src = 'img/default.png'}/>
+                <div className="card-info">
+                  <div className="card-company">
+                    <div className="frame">
+                      <div className="text-wrapper-2">{card.hashtags[0]}</div>
+                    </div>
+                  </div>
+                  <div className="text-wrapper">{card.name}</div>
+                  <div className="features">{card.benefits.join(' | ')}</div>
+                  <div className="hashtags">
+                    <div className="text-wrapper-3">#{card.hashtags.join(' #')}</div>
                   </div>
                 </div>
-                <div className="text-wrapper">{card.name}</div>
-                <div className="features">{card.benefits.join(' | ')}</div>
-                <div className="hashtags">
-                  <div className="text-wrapper-3">#{card.hashtags.join(' #')}</div>
-                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+        {visibleCards < filteredCards.length && (
+          <div className="load-more" onClick={handleLoadMore}>
+            Load More
+          </div>
+        )}
       </div>
-      {visibleCards < filteredCards.length && (
-        <div className="load-more" onClick={handleLoadMore}>
-          Load More
-        </div>
-      )}
     </div>
   );
 };
