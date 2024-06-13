@@ -69,7 +69,7 @@ const UserInfoForm = ({ onSubmit }) => {
         e.preventDefault();
         console.log(formData);
         try {
-            const response = await fetch(`${config.serverUrl}/user/data`, {
+            const response = await fetch(`api/user/data`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

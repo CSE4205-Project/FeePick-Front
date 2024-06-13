@@ -14,7 +14,7 @@ const DetailPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${config.serverUrl}/benefit/list`, {
+        const response = await fetch(`/api/benefit/list`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
