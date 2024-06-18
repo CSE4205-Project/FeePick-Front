@@ -1,5 +1,5 @@
 const config = {
-  serverUrl: '//13.250.102.81:5001',
+  serverUrl: '//52.74.252.188:5001',
 };
 
 export default config;
