@@ -24,7 +24,7 @@ const ListPage = () => {
   const [filteredCards, setFilteredCards] = useState([]);
 
   useEffect(() => {
-    fetch(`${config.serverUrl}/benefit/test`, {
+    fetch(`${config.serverUrl}/benefit/list`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
